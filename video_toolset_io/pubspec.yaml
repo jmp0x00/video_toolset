@@ -1,5 +1,5 @@
-name: video_toolset
-description: "Video Toolset"
+name: video_toolset_io
+description: "Video toolset IO"
 version: 0.0.1
 publish_to: none
 
@@ -9,26 +9,23 @@ environment:
 
 flutter:
   plugin:
+    implements: video_toolset
     platforms:
       android:
-        default_package: video_toolset_io
+        package: video_toolset
+        pluginClass: VideoToolsetPlugin
+        fileName: video_toolset_io.dart
       ios:
-        default_package: video_toolset_io
-      web:
-        default_package: video_toolset_web
+        pluginClass: VideoToolsetPlugin
+        fileName: video_toolset_io.dart
 
 dependencies:
   flutter:
     sdk: flutter
   video_toolset_platform_interface:
     path: ../video_toolset_platform_interface
-  video_toolset_web:
-    path: ../video_toolset_web
-  video_toolset_io:
-    path: ../video_toolset_io
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
-

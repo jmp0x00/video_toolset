@@ -1,5 +1,5 @@
-import 'package:video_toolset/audio_info.dart';
-import 'package:video_toolset/subtitles_info.dart';
+import 'audio_info.dart';
+import 'subtitles_info.dart';
 
 class VideoInfo {
   final String title;

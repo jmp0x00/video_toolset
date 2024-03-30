@@ -1,14 +1,31 @@
 library video_toolset;
 
-import 'package:video_toolset/file_handler.dart';
-import 'package:video_toolset/video_info.dart';
+import 'package:video_toolset_platform_interface/file_handler.dart';
+import 'package:video_toolset_platform_interface/file_type.dart';
+import 'package:video_toolset_platform_interface/video_info.dart';
+import 'package:video_toolset_platform_interface/video_toolset_platform_interface.dart';
 
-abstract interface class VideoToolset<T> {
-  Future<void> initialize();
-  Future<void> dispose();
+class VideoToolset {
 
-  Future<FileHandler<T>> open();
-  Future<void> close(FileHandler<T> file);
+  static VideoToolsetPlatform get platform => VideoToolsetPlatform.instance;
 
-  Future<VideoInfo> getVideoInfo(FileHandler<T> file);
+  Future<void> initialize() {
+    return platform.initialize();
+  }
+
+  Future<void> dispose() {
+    return platform.dispose();
+  }
+
+  Future<FileHandler> open({required FileType type}) {
+    return platform.open(type: type);
+  }
+
+  Future<void> close(FileHandler file) {
+    return platform.close(file);
+  }
+
+  Future<VideoInfo> getVideoInfo(FileHandler file) {
+    return platform.getVideoInfo(file);
+  }
 }
