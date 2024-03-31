@@ -21,11 +21,17 @@ dependencies:
   flutter:
     sdk: flutter
   video_toolset_platform_interface:
-    path: ../video_toolset_platform_interface
+    git:
+      url: https://github.com/jmp0x00/video_toolset.git
+      path: video_toolset_platform_interface
   video_toolset_web:
-    path: ../video_toolset_web
+    git:
+      url: https://github.com/jmp0x00/video_toolset.git
+      path: video_toolset_web
   video_toolset_io:
-    path: ../video_toolset_io
+    git:
+      url: https://github.com/jmp0x00/video_toolset.git
+      path: video_toolset_io
 
 dev_dependencies:
   flutter_test:

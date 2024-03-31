@@ -1,7 +1,6 @@
 name: video_toolset_platform_interface
-description: "A new Flutter package project."
+description: "Video toolset platform interface"
 version: 0.0.1
-homepage:
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
