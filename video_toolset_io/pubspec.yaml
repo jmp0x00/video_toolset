@@ -12,8 +12,7 @@ flutter:
     implements: video_toolset
     platforms:
       android:
-        package: video_toolset
-        pluginClass: VideoToolsetPlugin
+        dartPluginClass: VideoToolsetPlugin
         fileName: video_toolset_io.dart
       ios:
         pluginClass: VideoToolsetPlugin
