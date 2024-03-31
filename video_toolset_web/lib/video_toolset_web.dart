@@ -68,6 +68,9 @@ class VideoToolsetPlugin extends VideoToolsetPlatform {
     uploadInput.addEventListener('change', changeEventListener);
     uploadInput.addEventListener('cancel', cancelledEventListener);
 
+    _inputContainer()?.children.add(uploadInput);
+    uploadInput.click();
+
     return completer.future;
   }
 
