@@ -28,10 +28,10 @@ dependencies:
     git:
       url: https://github.com/jmp0x00/video_toolset.git
       path: video_toolset_web
-  video_toolset_io:
-    git:
-      url: https://github.com/jmp0x00/video_toolset.git
-      path: video_toolset_io
+#  video_toolset_io:
+#    git:
+#      url: https://github.com/jmp0x00/video_toolset.git
+#      path: video_toolset_io
 
 dev_dependencies:
   flutter_test:
