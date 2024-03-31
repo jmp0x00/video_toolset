@@ -13,10 +13,8 @@ flutter:
     platforms:
       android:
         dartPluginClass: VideoToolsetPlugin
-        fileName: video_toolset_io.dart
       ios:
-        pluginClass: VideoToolsetPlugin
-        fileName: video_toolset_io.dart
+        dartPluginClass: VideoToolsetPlugin
 
 dependencies:
   flutter:

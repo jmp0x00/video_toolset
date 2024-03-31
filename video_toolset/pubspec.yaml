@@ -10,10 +10,10 @@ environment:
 flutter:
   plugin:
     platforms:
-      android:
-        default_package: video_toolset_io
-      ios:
-        default_package: video_toolset_io
+#      android:
+#        default_package: video_toolset_io
+#      ios:
+#        default_package: video_toolset_io
       web:
         default_package: video_toolset_web
 
