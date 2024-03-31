@@ -7,7 +7,6 @@ import 'dart:js_interop_unsafe';
 
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:video_toolset_platform_interface/file_handler.dart';
-import 'package:video_toolset_platform_interface/file_type.dart';
 import 'package:video_toolset_platform_interface/video_info.dart';
 import 'package:video_toolset_platform_interface/video_toolset_platform_interface.dart';
 import 'package:video_toolset_web/web_file_handler.dart';
@@ -34,16 +33,16 @@ class VideoToolsetPlugin extends VideoToolsetPlatform {
   }
 
   @override
-  Future<FileHandler> open({required FileType type}) {
+  Future<String?> open({required String accept}) {
     final String id = DateTime.now().toString();
 
-    final Completer<FileHandler> completer = Completer<FileHandler>();
+    final Completer<String?> completer = Completer();
 
     final InputElement uploadInput = (FileUploadInputElement() as InputElement)
       ..id = id
       ..draggable = true
       ..multiple = false
-      ..accept = _fileType(type)
+      ..accept = accept
       ..style.display = 'none';
 
     bool changeEventTriggered = false;
@@ -57,14 +56,14 @@ class VideoToolsetPlugin extends VideoToolsetPlatform {
       final List<File> files = uploadInput.files ?? [];
 
       if (files.isEmpty) {
-        completer.complete(EmptyFileHandler());
+        completer.complete();
       } else {
-        completer.complete(WebFileHandler(id: id));
+        completer.complete(id);
       }
     }
 
     void cancelledEventListener(_) {
-      completer.complete(EmptyFileHandler());
+      completer.complete();
     }
 
     uploadInput.onChange.listen(changeEventListener);
@@ -75,12 +74,12 @@ class VideoToolsetPlugin extends VideoToolsetPlatform {
   }
 
   @override
-  Future<void> close(FileHandler file) async {
-    if (file is EmptyFileHandler) {
+  Future<void> close(String file) async {
+    if (file.isEmpty) {
       return;
     }
     if (file is WebFileHandler) {
-      querySelector('#${file.id}')?.remove();
+      querySelector('#$file')?.remove();
     }
   }
 
@@ -115,17 +114,6 @@ class VideoToolsetPlugin extends VideoToolsetPlatform {
       );
     } finally {
       ffprobe.terminate();
-    }
-  }
-
-  String _fileType(FileType type) {
-    switch (type) {
-      case FileType.video:
-        return 'video/*';
-      case FileType.audio:
-        return 'audio/*';
-      case FileType.subtitles:
-        return 'image/*';
     }
   }
 

@@ -2,7 +2,6 @@ library video_toolset_platform_interface;
 
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:video_toolset_platform_interface/file_handler.dart';
-import 'package:video_toolset_platform_interface/file_type.dart';
 import 'package:video_toolset_platform_interface/video_info.dart';
 
 abstract class VideoToolsetPlatform extends PlatformInterface {
@@ -27,11 +26,11 @@ abstract class VideoToolsetPlatform extends PlatformInterface {
     throw UnimplementedError('dispose() has not been implemented.');
   }
 
-  Future<FileHandler> open({required FileType type}) {
+  Future<String?> open({required String accept}) {
     throw UnimplementedError('open() has not been implemented.');
   }
 
-  Future<void> close(FileHandler file) {
+  Future<void> close(String file) {
     throw UnimplementedError('close() has not been implemented.');
   }
 

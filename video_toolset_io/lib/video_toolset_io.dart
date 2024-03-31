@@ -1,7 +1,6 @@
 library video_toolset_io;
 
 import 'package:video_toolset_platform_interface/file_handler.dart';
-import 'package:video_toolset_platform_interface/file_type.dart';
 import 'package:video_toolset_platform_interface/video_info.dart';
 import 'package:video_toolset_platform_interface/video_toolset_platform_interface.dart';
 
@@ -24,13 +23,13 @@ class VideoToolsetPlugin extends VideoToolsetPlatform {
   }
 
   @override
-  Future<FileHandler> open({required FileType type}) {
+  Future<String?> open({required String accept}) {
     // TODO: implement open
-    return super.open(type: type);
+    return super.open(accept: accept);
   }
 
   @override
-  Future<void> close(FileHandler file) {
+  Future<void> close(String file) {
     // TODO: implement close
     return super.close(file);
   }
