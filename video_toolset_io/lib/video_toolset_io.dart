@@ -1,6 +1,5 @@
 library video_toolset_io;
 
-import 'package:video_toolset_platform_interface/file_handler.dart';
 import 'package:video_toolset_platform_interface/video_info.dart';
 import 'package:video_toolset_platform_interface/video_toolset_platform_interface.dart';
 
@@ -35,7 +34,7 @@ class VideoToolsetPlugin extends VideoToolsetPlatform {
   }
 
   @override
-  Future<VideoInfo> getVideoInfo(FileHandler file) {
+  Future<VideoInfo> getVideoInfo(String file) {
     // TODO: implement getVideoInfo
     return super.getVideoInfo(file);
   }

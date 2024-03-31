@@ -6,10 +6,8 @@ import 'dart:js_interop';
 import 'dart:js_interop_unsafe';
 
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:video_toolset_platform_interface/file_handler.dart';
 import 'package:video_toolset_platform_interface/video_info.dart';
 import 'package:video_toolset_platform_interface/video_toolset_platform_interface.dart';
-import 'package:video_toolset_web/web_file_handler.dart';
 import 'package:video_toolset_web/ffprobe.dart';
 
 class VideoToolsetPlugin extends VideoToolsetPlatform {
@@ -75,33 +73,18 @@ class VideoToolsetPlugin extends VideoToolsetPlatform {
 
   @override
   Future<void> close(String file) async {
-    if (file.isEmpty) {
-      return;
-    }
-    if (file is WebFileHandler) {
-      querySelector('#$file')?.remove();
-    }
+    querySelector('#$file')?.remove();
   }
 
   @override
-  Future<VideoInfo> getVideoInfo(FileHandler file) async {
-    if (file is WebFileHandler) {
-      return await _getVideoInfo(file);
-    } else if (file is EmptyFileHandler) {
-      throw Exception('Cannot get video information from empty file');
-    } else {
-      throw Exception('Cannot get video information from unknown type of file');
-    }
-  }
-
-  Future<VideoInfo> _getVideoInfo(WebFileHandler file) async {
+  Future<VideoInfo> getVideoInfo(String file) async {
     final ffprobe = FFprobeWorker();
 
     try {
-      final input = querySelector(file.id) as InputElement;
+      final input = querySelector('#$file') as InputElement;
       final files = input.files ?? [];
       if (files.isEmpty) {
-        throw Exception('Input ${file.id} is empty');
+        throw Exception('Input $file is empty');
       }
 
       final fileInfo = await ffprobe.getFileInfo(files.first);

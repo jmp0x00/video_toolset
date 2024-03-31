@@ -1,7 +1,6 @@
 library video_toolset_platform_interface;
 
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-import 'package:video_toolset_platform_interface/file_handler.dart';
 import 'package:video_toolset_platform_interface/video_info.dart';
 
 abstract class VideoToolsetPlatform extends PlatformInterface {
@@ -34,7 +33,7 @@ abstract class VideoToolsetPlatform extends PlatformInterface {
     throw UnimplementedError('close() has not been implemented.');
   }
 
-  Future<VideoInfo> getVideoInfo(FileHandler file) {
+  Future<VideoInfo> getVideoInfo(String file) {
     throw UnimplementedError('getVideoInfo() has not been implemented.');
   }
 }
