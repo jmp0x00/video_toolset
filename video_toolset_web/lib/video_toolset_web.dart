@@ -32,7 +32,7 @@ class VideoToolsetPlugin extends VideoToolsetPlatform {
 
   @override
   Future<String?> open({required String accept}) {
-    final String id = DateTime.now().toString();
+    final String id = DateTime.now().millisecondsSinceEpoch.toString();
 
     final Completer<String?> completer = Completer();
 
